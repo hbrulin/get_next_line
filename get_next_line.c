@@ -70,7 +70,6 @@ int ft_fill_line(char **s, char **line)
         {
             free(*s);
             s = NULL;
-            return (0);
         }
     }
     else if ((*s)[len] == '\0')
@@ -90,6 +89,8 @@ int     get_next_line(int fd, char **line)
     char *tmp;
     int ret;
 
+    //il faut gerer le cas de l'empty line
+
     if (fd < 0 || line == NULL)
         return (-1);
     while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
@@ -98,7 +99,6 @@ int     get_next_line(int fd, char **line)
         if (s == NULL)
             s = ft_strnew(1);
         tmp = ft_strjoin(s, buf);
-        free(s);
         s = tmp;
         if (ft_strchr(buf, '\n'))
             break;
