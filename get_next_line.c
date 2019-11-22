@@ -6,7 +6,7 @@
 /*   By: hbrulin <hbrulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:26:33 by hbrulin           #+#    #+#             */
-/*   Updated: 2019/11/21 19:36:21 by hbrulin          ###   ########.fr       */
+/*   Updated: 2019/11/22 11:37:28 by hbrulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int ft_fill_line(char **s, char **line)
         (*s) = tmp;
         if ((*s)[0] == '\0')
         {
-            free(*s);
+            //free(*s);
             s = NULL;
         }
     }
@@ -91,7 +91,7 @@ int     get_next_line(int fd, char **line)
 
     //il faut gerer le cas de l'empty line
 
-    if (fd < 0 || line == NULL)
+    if (fd < 0 || line == NULL || BUFFER_SIZE == 0)
         return (-1);
     while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
     {
@@ -105,7 +105,7 @@ int     get_next_line(int fd, char **line)
     }
     if (ret < 0)
         return(-1);
-    else if (ret == 0 && (s == NULL || s[0] == '\0'))
+    else if (ret == 0 && (s == NULL))
         return (0);
     return (ft_fill_line(&s, line));
 }

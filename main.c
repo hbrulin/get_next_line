@@ -13,7 +13,7 @@ int main(void)
     char *line;
     int ret;
 
-    fd = open("empty.txt", O_RDONLY);
+    fd = open("text.txt", O_RDONLY);
     //if (!(line = (char **)malloc(sizeof(char*) * 10000)))
         //return (0);
     
@@ -54,6 +54,9 @@ int main(void)
     printf("%s\n", line);
     printf("%i\n", ret);
     free(line);
+
+    while (1)
+    ;
 
     return(0);
 }
