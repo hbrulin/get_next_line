@@ -6,7 +6,7 @@
 /*   By: hbrulin <hbrulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:26:33 by hbrulin           #+#    #+#             */
-/*   Updated: 2019/11/22 11:37:28 by hbrulin          ###   ########.fr       */
+/*   Updated: 2019/11/22 12:32:27 by hbrulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int     get_next_line(int fd, char **line)
         if (s == NULL)
             s = ft_strnew(1);
         tmp = ft_strjoin(s, buf);
+        free(s);
         s = tmp;
         if (ft_strchr(buf, '\n'))
             break;

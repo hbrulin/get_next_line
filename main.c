@@ -55,8 +55,8 @@ int main(void)
     printf("%i\n", ret);
     free(line);
 
-    while (1)
-    ;
+    /*while (1)
+    ;*/
 
     return(0);
 }
