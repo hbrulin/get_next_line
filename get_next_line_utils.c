@@ -6,7 +6,7 @@
 /*   By: hbrulin <hbrulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:26:42 by hbrulin           #+#    #+#             */
-/*   Updated: 2019/11/19 11:18:45 by hbrulin          ###   ########.fr       */
+/*   Updated: 2019/11/22 14:02:47 by hbrulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
-}
-
-char *ft_strnew(size_t size)
-{
-    char *s;
-    size_t i;
-
-    i = 0;
-    if(!(s = (char*)malloc(size + 1)))
-        return (NULL);
-    while (i < size)
-        s[i++] = 0;
-    s[size] = '\0';
-    return(s);
 }
 
 char	*ft_strcpy(char *dst, const char *src)
