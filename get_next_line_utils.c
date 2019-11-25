@@ -6,7 +6,7 @@
 /*   By: hbrulin <hbrulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:26:42 by hbrulin           #+#    #+#             */
-/*   Updated: 2019/11/22 14:02:47 by hbrulin          ###   ########.fr       */
+/*   Updated: 2019/11/25 11:25:31 by hbrulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,43 +51,38 @@ char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
-char	*ft_boucle(char const *s1, char const *s2, char *s3)
-{
-	int		i;
-	int		j;
-	size_t	s1len;
-	size_t	s2len;
-
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	i = 0;
-	j = 0;
-	while (s1len--)
-	{
-		s3[i] = s1[i];
-		i++;
-	}
-	while (s2len--)
-	{
-		s3[i] = s2[j];
-		i++;
-		j++;
-	}
-	s3[i] = '\0';
-	return (s3);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*s3;
-	size_t	s1len;
-	size_t	s2len;
+	char	*r;
+	int		i;
+	int		j;
 
-	if (!(s1 && s2))
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	r = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (r == NULL)
 		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	if (!(s3 = (char *)malloc(sizeof(*s3) * (s1len + s2len + 1))))
+	while (s1[j] != '\0')
+		r[i++] = s1[j++];
+	j = 0;
+	while (s2[j] != '\0')
+		r[i++] = s2[j++];
+	r[i] = '\0';
+	return (r);
+}
+
+char	*ft_strnew(size_t size)
+{
+	char	*s;
+	size_t	i;
+
+	i = 0;
+	if (!(s = (char*)malloc(size + 1)))
 		return (NULL);
-	return (ft_boucle(s1, s2, s3));
+	while (i < size)
+		s[i++] = 0;
+	s[size] = '\0';
+	return (s);
 }
