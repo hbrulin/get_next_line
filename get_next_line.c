@@ -6,7 +6,7 @@
 /*   By: hbrulin <hbrulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 10:26:33 by hbrulin           #+#    #+#             */
-/*   Updated: 2019/11/25 12:55:45 by hbrulin          ###   ########.fr       */
+/*   Updated: 2020/01/07 08:00:41 by hbrulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,8 @@ int		ft_return(char **line, char **s, int ret)
 
 	len = 0;
 	if (ret < 0)
-	{
-		*line = ft_strdup("");
 		return (-1);
-	}
-	else if (ret == 0 && (*s == NULL))
+	else if (ret == 0 && (*s == NULL || s[0] == '\0'))
 	{
 		*line = ft_strdup("");
 		return (0);
@@ -105,13 +102,8 @@ int		get_next_line(int fd, char **line)
 	char			*tmp;
 	int				ret;
 
-	if (line == NULL)
+	if (fd < 0 || line == NULL || BUFFER_SIZE == 0)
 		return (-1);
-	if (fd < 0 || BUFFER_SIZE == 0)
-	{
-		*line = ft_strdup("");
-		return (-1);
-	}
 	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
